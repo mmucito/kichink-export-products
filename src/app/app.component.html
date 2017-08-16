@@ -1,0 +1,54 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="page-header title">
+  <h1 class="title-h1">Kichink Export Products</h1>
+  <div>
+    <img class="title-logo" src="assets/img/header_kichink.png"/>    
+  </div>
+  <h1 class="title-h2">You can export your Kichink products to a CSV file if you want to create a backup, move your existing products to a different Store manager, edit your products in bulk using a spreadsheet, or Upload Your Product Catalog to Facebook</h1>
+</div>
+<div class="container">
+  <div class="row">
+    <br>
+    <br>
+    <br>
+  </div>
+  <div class="row">
+    <h4>Export Products</h4>
+  </div>
+  <div class="row">
+      <div *ngIf=objLoaderStatus style="position:absolute; z-index:0; width: 100%;">
+          <div style="vertical-align:middle; text-align:center; width: 100%;">
+              <img src="assets/img/Spinner.svg" alt="">
+          </div>
+        
+      </div>
+    <form [formGroup]="exportForm" (ngSubmit)="export()" novalidate>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Kichink Store ID (Example: 80722)</label>
+            <br>
+            <img src="assets/img/example.png" alt="">
+            <br>
+            <input type="number" class="form-control" id="store_id" aria-describedby="storeIdHelp" formControlName="store_id" required placeholder="Kichink Store ID">
+            <small id="storeIdHelp" class="form-text text-muted">We'll not store your ID or any Product, all the processing happen on your browser.</small>
+          </div>
+         
+          <p>Export your products as a:
+          <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                CSV for Excel, Numbers and other spreadsheet programs. (Facebook Product Catalog Fields <a href="https://www.facebook.com/business/help/1397294963910848" target="_blank">more info..</a>).
+              </label>
+            </div>
+            
+            
+          <button type="submit" [disabled]="exportForm.pristine||objLoaderStatus" class="btn btn-success">
+              
+            Export Products</button>
+
+
+          
+    </form>
+          
+        
+  </div>
+</div>
