@@ -2,8 +2,11 @@
 
 AngularJS app that let you export your Kichink products to a CSV file if you want to create a backup, move your existing products to a different Store manager, edit your products in bulk using a spreadsheet, or Upload Your Product Catalog to Facebook
 
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
+
+## Live
+
+http://kichink-export-products.codearmy.co/
 
 ## Development server
 
