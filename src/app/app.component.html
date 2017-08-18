@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="page-header title">
-  <h1 class="title-h1">Exportar productos de tu tienda Kichink a CSV</h1>
+  <h1 class="title-h1">Kichink Export</h1>
   <div>
     <img class="title-logo" src="assets/img/header_kichink.png"/>    
   </div>
@@ -9,9 +9,7 @@
 </div>
 <div class="container">
   <div class="row">
-    <br>
-    <br>
-    <br>
+      <hr/>
   </div>
   <div class="row">
     <h4>Exportar Productos</h4>
@@ -26,11 +24,14 @@
     <form [formGroup]="exportForm" (ngSubmit)="export()" novalidate>
           <div class="form-group">
             <label for="exampleInputEmail1">Kichink Store ID (Ejemplo: 80722)</label>
-            <br>
-            <img src="assets/img/example.png" alt="">
-            <br>
             <input type="number" class="form-control" id="store_id" aria-describedby="storeIdHelp" formControlName="store_id" required placeholder="Kichink Store ID">
-            <small id="storeIdHelp" class="form-text text-muted">No guardaremos tu Store ID ni ningún producto en nuestro servidores. Todo el procesamiento es llevado acabo de tu Navegador.</small>
+            <small id="storeIdHelp" class="form-text text-muted">No guardaremos tu Store ID ni ningún producto en nuestro servidor. Todo el procesamiento es llevado acabo de tu Navegador.</small>
+            <br/>
+            <br/>
+            <img src="assets/img/example.png" alt="">
+            <br/>
+            <hr/>
+            
           </div>
          
           <p>Exporta tu producto como:
@@ -49,7 +50,12 @@
 
           
     </form>
+    
           
         
+  </div>
+  <div class="row">
+      <br/>
+    <hr/>
   </div>
 </div>
