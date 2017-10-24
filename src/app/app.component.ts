@@ -47,74 +47,35 @@ export class AppComponent {
           product_type = product_type + separator + category.name;
         });
 
+        let google_product_category = '';
+        if (element.categories.length > 0) {
+          if (element.categories[0].name.toLowerCase().indexOf('contacto') >= 0) {
+            google_product_category = 'Salud y belleza > Cuidado personal > Cuidado visual > Lentes de contacto';
+          }else if (element.categories[0].name.toLowerCase().indexOf('sol') >= 0) {
+            google_product_category = 'Ropa y accesorios > Complementos > Gafas de sol';
+          }
+        }
+
         const product = {
           'id': element.id,
+          'gtin': element.id,
           'title': element.name,
-          'ios_url': '',
-          'ios_app_store_id': '',
-          'ios_app_name': '',
-          'android_url': '',
-          'android_package': '',
-          'android_app_name': '',
-          'windows_phone_url': '',
-          'windows_phone_app_id': '',
-          'windows_phone_app_name': '',
           'description': element.description,
-          'google_product_category': product_type,
+          'google_product_category': google_product_category,
           'product_type': product_type,
-          'link': 'https://www.kichink.com/buy/' + element.id + '/',
+          'link': 'http://siloe.me/?product=https://www.kichink.com/buy/' + element.id + '/&id=' + element.id + '&value=' + element.price,
           'image_link': element.images[0].bordered,
-          'condition': (element.new_item === '1') ? 'new'  : 'used',
+          'condition': 'new',
           'availability': 'in stock',
-          'price': element.price + 'MXN',
-          'sale_price': (element.price - element.discount_price) + 'MXN',
-          'sale_price_effective_date': '',
-          'gtin': '',
-          'brand': element.storeUrl,
-          'mpn': '',
-          'item_group_id': '',
-          'gender': '',
-          'age_group': '',
-          'color': '',
-          'size': '',
-          'shipping': '',
+          'price': element.price + ' MXN',
+          'sale_price': (element.price - element.discount_price) + ' MXN',
+          'brand': (element.categories.length > 0) ? element.categories[element.categories.length - 1].name : '',
           // 'custom_label_0': element.name,
         };
+
         products.push(product);
       });
-      const headers = [
-        'id',
-        'title',
-        'ios_url',
-        'ios_app_store_id',
-        'ios_app_name',
-        'android_url',
-        'android_package',
-        'android_app_name',
-        'windows_phone_url',
-        'windows_phone_app_id',
-        'windows_phone_app_name',
-        'description',
-        'google_product_category',
-        'product_type',
-        'link',
-        'image_link',
-        'condition',
-        'availability',
-        'price',
-        'sale_price',
-        'sale_price_effective_date',
-        'gtin',
-        'brand',
-        'mpn',
-        'item_group_id',
-        'gender',
-        'age_group',
-        'color',
-        'size',
-        'shipping',
-        // 'custom_label_0': element.name,
-      ];
+
       const options = {
         fieldSeparator: ',',
         quoteStrings: '"',
@@ -122,7 +83,7 @@ export class AppComponent {
         showLabels: true,
         showTitle: false,
         useBom: false,
-        headers: headers
+        headers: Object.keys(products[0])
       };
       const file = new Angular2Csv(products, 'Kichink Products', options);
     })
